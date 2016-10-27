@@ -6,8 +6,8 @@ var Pushup = require('../models/Pushup');
 /* GET home page. */
 router.get('/', function (req, res, next) {
 
-
     Pushup.find(function (err, pushups) {
+        // console.log("Tiem:", Date.parse(pushups[0].date));
         var context = {};
         context.pushups = pushups.map(function (pushup) {
             return {
@@ -16,6 +16,13 @@ router.get('/', function (req, res, next) {
                 sum: pushup.getSum()
             }
         });
+
+        context.graph = JSON.stringify(pushups.map(function (pushup) {
+            return {
+                x: (new Date(pushup.date)).getTime(),
+                y: pushup.getProgress()
+            }
+        }));
 
         res.render('index', context);
     });
