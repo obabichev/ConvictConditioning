@@ -1,2 +1,59 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="d3.v2.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>PushUp</h1>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Level</th>
+        <th>Sum</th>
+    </tr>
+    {{#each pushups}}
+        <tr>
+            <th>{{date}}</th>
+            <th>{{level}}</th>
+            <th>{{sum}}</th>
+        </tr>
+    {{/each}}
+</table>
+<form action="/progress" method="post">
+    <input type="hidden" name="hush" val="Скрытое, но не секретное!">
+    <div>
+        <h3>Date</h3>
+        <input type="date" data-date-inline-picker="true" id="fieldDate" name="date"/>
+    </div>
+    <div>
+        <h3>Level</h3>
+        <select name="level">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div>
+        <h3>Reps</h3>
+        <input type="number" name="rep1"/>
+        <input type="number" name="rep2"/>
+        <input type="number" name="rep3"/>
+    </div>
+    <div>
+        <button type="submit">Отправить</button>
+    </div>
+</form>
+
+</body>
+</html>
+
+
