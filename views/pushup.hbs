@@ -1,0 +1,71 @@
+<h1>PushUp</h1>
+
+<div>
+    <canvas id="myChart" width="200" height="200"></canvas>
+</div>
+<script>
+    //    var Chart = require('../node_modules/chart.js');
+    $(document).ready(function () {
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                label: 'Scatter Dataset',
+                datasets: [{
+                    label: 'Scatter Dataset',
+                    data: JSON.parse('{{{graph}}}')
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom'
+                    }]
+                }
+            }
+
+        });
+    });
+</script>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Level</th>
+        <th>Sum</th>
+    </tr>
+    {{#each pushups}}
+        <tr>
+            <th>{{date}}</th>
+            <th>{{level}}</th>
+            <th>{{sum}}</th>
+        </tr>
+    {{/each}}
+</table>
+<form action="/progress" method="post">
+    <input type="hidden" name="hush" val="Скрытое, но не секретное!">
+    <div>
+        <h3>Date</h3>
+        <input type="date" data-date-inline-picker="true" id="fieldDate" name="date"/>
+    </div>
+    <div>
+        <h3>Level</h3>
+        <select name="level">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div>
+        <h3>Reps</h3>
+        <input type="number" name="rep1"/>
+        <input type="number" name="rep2"/>
+        <input type="number" name="rep3"/>
+    </div>
+    <div>
+        <button type="submit">Отправить</button>
+    </div>
+</form>

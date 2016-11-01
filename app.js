@@ -4,15 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressHbs = require('express3-handlebars');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var pushup = require('./routes/pushup');
 
 var app = express();
 
 var credentials = require('./credentials');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
+app.engine('hbs', expressHbs({extname:'hbs', defaultLayout:'layout.hbs'}));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
@@ -24,16 +27,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/pushup', pushup);
 
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-// error handlers
 
 // development error handler
 // will print stacktrace
@@ -63,6 +64,7 @@ var opts = {
         socketOptions: {keepAlive: 1}
     }
 };
+
 switch (app.get('env')) {
     case 'development':
         mongoose.connect(credentials.mongo.development.connectionString, opts);

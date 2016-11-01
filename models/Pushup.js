@@ -26,11 +26,13 @@ pushUpSchema.methods.getProgress = function () {
 };
 
 pushUpSchema.methods.getLocalProgress = function () {
-    if (this.level == 1){
-        return this.getSum() / 12;
-    }
-    if (this.level == 2){
-        return this.getSum() / 9;
+    switch (this.level) {
+        case 1:
+            return this.getSum() / 12;
+        case 2:
+            return this.getSum() / 9;
+        default:
+            console.log("Pushup.js: Something went wrong");
     }
 };
 
