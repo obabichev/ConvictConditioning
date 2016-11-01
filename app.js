@@ -15,7 +15,15 @@ var credentials = require('./credentials');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
-app.engine('hbs', expressHbs({extname:'hbs', defaultLayout:'layout.hbs'}));
+app.engine('hbs', expressHbs({
+    extname: 'hbs',
+    defaultLayout: 'layout.hbs',
+    helpers: {
+        json: function (context) {
+            return JSON.stringify(context);
+        }
+    }
+}));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public

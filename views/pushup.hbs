@@ -1,33 +1,8 @@
 <h1>PushUp</h1>
 
 <div>
-    <canvas id="myChart" width="200" height="200"></canvas>
+    <canvas id="chart" width="600px" height="400px"></canvas>
 </div>
-<script>
-    //    var Chart = require('../node_modules/chart.js');
-    $(document).ready(function () {
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                label: 'Scatter Dataset',
-                datasets: [{
-                    label: 'Scatter Dataset',
-                    data: JSON.parse('{{{graph}}}')
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        type: 'linear',
-                        position: 'bottom'
-                    }]
-                }
-            }
-
-        });
-    });
-</script>
 
 <table>
     <tr>
@@ -43,7 +18,8 @@
         </tr>
     {{/each}}
 </table>
-<form action="/progress" method="post">
+
+<form action="/pushup" method="post">
     <input type="hidden" name="hush" val="Скрытое, но не секретное!">
     <div>
         <h3>Date</h3>
@@ -69,3 +45,8 @@
         <button type="submit">Отправить</button>
     </div>
 </form>
+
+<script>
+    var graph = {{{json graph}}}
+</script>
+<script src="/javascripts/pushup.js"></script>

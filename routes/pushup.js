@@ -21,23 +21,27 @@ router.get('/', function (req, res, next) {
             }
         });
 
-        context.graph = JSON.stringify(pushups.map(function (pushup) {
+        context.graph = pushups.map(function (pushup) {
             return {
                 x: (new Date(pushup.date)).getTime(),
                 y: pushup.getProgress()
             }
-        }));
+        });
 
         res.render('pushup', context);
     });
 });
 
 router.post('/', function (req, res) {
+    console.log("pushup:save new pushup");
     new Pushup({
         level: req.body.level,
         reps: [req.body.rep1, req.body.rep2, req.body.rep3],
         date: req.body.date
     }).save();
+
+    res.writeHead(303, {Location: req.headers.referer});
+    res.end();
 });
 
 module.exports = router;
