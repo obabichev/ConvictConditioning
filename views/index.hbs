@@ -1,3 +1,17 @@
 <h2> It is empty yet >_< </h2>
 
 <a href="/pushup">PushUp</a>
+
+<div>User:{{user.displayName}}</div>
+<div>is authoricated:{{auth}}</div>
+
+{{#if user}}
+    <div class="user-card">
+        User
+    </div>
+{{else}}
+    <div>
+        Not User
+    </div>
+{{/if}}
+

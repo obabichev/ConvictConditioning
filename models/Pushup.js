@@ -1,7 +1,3 @@
-/**
- * Created by olegchuikin on 27/10/16.
- */
-
 var mongoose = require('mongoose');
 var pushUpSchema = mongoose.Schema({
     level: Number,

@@ -3,10 +3,12 @@ var router = express.Router();
 
 var Pushup = require('../models/Pushup');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-
-    res.render('index');
+router.get('/', function (req, res) {
+    console.log("USER:" + JSON.stringify(req.user));
+    res.render('index', {
+        user: req.user,
+        auth: req.isAuthenticated()
+    });
 });
 
 module.exports = router;
