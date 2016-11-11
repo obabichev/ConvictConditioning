@@ -9,12 +9,10 @@ router.get('/', function (req, res) {
         return;
     }
 
-    res.render('auth', {
-        error: req.flash('error')
-    });
+    res.render('auth');
 });
 
-router.get('/sign-out', function (req, res) {
+router.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
 });
