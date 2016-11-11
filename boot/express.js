@@ -11,17 +11,12 @@ var expressSession = require('express-session');
 
 var sessionOptions = {
     name: "name",
-    "secret": "it:demo:secret",
-    "key": "sid",
+    secret: "it:demo:secret",
+    key: "sid",
     maxAge: 36000000,
     httpOnly: false,
     resave: true,
     saveUninitialized: true
-    // "cookie": {
-    //     "path": "/",
-    //     "httpOnly": true,
-    //     "maxAge": null
-    // }
 };
 
 module.exports = function (app) {

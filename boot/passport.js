@@ -1,7 +1,5 @@
 var passport = require('passport');
 var AuthVKStrategy = require('passport-vkontakte').Strategy;
-var User = require('../models/user');
-
 
 passport.use(new AuthVKStrategy({
         clientID: "5704339",
