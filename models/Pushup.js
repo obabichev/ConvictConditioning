@@ -1,5 +1,8 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var pushUpSchema = mongoose.Schema({
+    userId: String,
     level: Number,
     reps: [Number],
     date: Date
@@ -22,11 +25,28 @@ pushUpSchema.methods.getProgress = function () {
 };
 
 pushUpSchema.methods.getLocalProgress = function () {
+    let sum = this.getSum();
     switch (this.level) {
         case 1:
-            return this.getSum() / 12;
+            return sum / 12;
         case 2:
-            return this.getSum() / 9;
+            return sum / 9;
+        case 3:
+            return sum / 6;
+        case 4:
+            return sum / 3;
+        case 5:
+            return sum / 2;
+        case 6:
+            return sum / 2;
+        case 7:
+            return sum / 1.8;
+        case 8:
+            return sum / 1.6;
+        case 9:
+            return sum / 1.4;
+        case 10:
+            return sum / 1.2;
         default:
             console.log("Pushup.js: Something went wrong");
     }

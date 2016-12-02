@@ -27,19 +27,12 @@
     </div>
     <div>
         <h3>Level</h3>
-        <select name="level">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+        <select id="select-exercise" name="level"></select>
     </div>
-    <div>
-        <h3>Reps</h3>
-        <input type="number" name="rep1"/>
-        <input type="number" name="rep2"/>
-        <input type="number" name="rep3"/>
+    <div id="sets-exercise">
+        <input type="number" name="rep"/>
+        <input type="number" name="rep"/>
+        <input type="number" name="rep"/>
     </div>
     <div>
         <button type="submit">Отправить</button>
@@ -47,6 +40,7 @@
 </form>
 
 <script>
-    var graph = {{{json graph}}}
+    var graph = {{{json graph}}};
+    var exercises = {{{json exercises}}};
 </script>
 <script src="/javascripts/pushup.js"></script>
