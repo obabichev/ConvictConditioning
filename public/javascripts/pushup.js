@@ -12,7 +12,7 @@ $(document).ready(function () {
         options: {
             scales: {
                 xAxes: [{
-                    type: 'linear',
+                    type: 'time',
                     position: 'bottom'
                 }]
             }
